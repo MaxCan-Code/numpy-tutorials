@@ -16,3 +16,6 @@ dependencies:
   - sphinx-copybutton
   # to load the md files in binder
   - jupytext
+  - pip
+  - pip:
+    - git+https://github.com/Dyalog/pynapl

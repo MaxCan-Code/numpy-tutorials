@@ -1,0 +1,11 @@
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+matplotlib = "^3.8.4"
+jupyterlab = "^4.2.0"
+jupytext = "^1.16.2"
+dyalog-jupyter-kernel = "^2.0.2"
+# Linux: see pynapl#16
+py-n-apl = {git = "https://github.com/Dyalog/pynapl"}
