@@ -16,7 +16,11 @@ kernelspec:
 
 # NumPy vs APL
 ![](https://assets-global.website-files.com/64483ba2cd3664f5275be1da/6453af3005d3267ad3bccce9_red-logo-short.svg)
+
 ![](https://assets-global.website-files.com/64483ba2cd3664f5275be1da/6453a4df70dfe3083a2fdc5d_logo-long.svg)
+
+https://youtu.be/ZB0IJMRpbRE
+
 @MaxCan-Code "Max Sun APL"
 
 +++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
@@ -204,6 +208,7 @@ slideshow:
 run("""
 csv←(⎕CSV⍠'Separator' ',')'transistor_data.csv'⍬ 4
 data←1↓csv[;2 3]
+data←1⊃⎕CSV'transistor_data.csv'⍬(0 4 4 0 0 0)1
 """);
 
 # csv = np.loadtxt("transistor_data.csv") # Value Error: could not convert string to float
