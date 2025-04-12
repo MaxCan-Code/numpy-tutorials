@@ -5,14 +5,14 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.1
+    jupytext_version: 1.16.7
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 # NumPy vs APL
 ![](https://assets-global.website-files.com/64483ba2cd3664f5275be1da/6453af3005d3267ad3bccce9_red-logo-short.svg)
@@ -23,7 +23,7 @@ https://youtu.be/ZB0IJMRpbRE
 
 @MaxCan-Code "Max Sun APL"
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 # NumPy vs APL
 - Going slow and easy, we have an hour
@@ -33,14 +33,14 @@ https://youtu.be/ZB0IJMRpbRE
 - Cover briefly then come back for Qs
 - Intentionally left out details so please ask as I go
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ## About me
 - Applied math in school
 - Knew APL from YouTube
 - Learned APL on the job last Jan (https://bcaresearch.com customer of Dyalog)
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ## What we'll do
 1. Simple Moore's Law model
@@ -55,7 +55,7 @@ https://youtu.be/ZB0IJMRpbRE
 
 Modified from https://numpy.org/numpy-tutorials/content/mooreslaw-tutorial.html
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ## What we need
 - Python (packages):
@@ -65,15 +65,14 @@ Modified from https://numpy.org/numpy-tutorials/content/mooreslaw-tutorial.html
     - SharpPlot (included) (OOP)
     - Py'n'APL (optional, external, open source)
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}}
 
 APL trigger warning
 - Butchered NumPy-style APL for comparison
 - APL users, sorry
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -84,7 +83,7 @@ apl = APL.APL()
 run = apl.eval
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## Model
 `Moores_law(year) = (e^B_M) × (e^(A_M × year))`
@@ -93,9 +92,8 @@ run = apl.eval
 
 `B_M = (log 2250) - A_M × 1971`
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -113,13 +111,12 @@ run("Moores_law ← {      year←⍵ ⋄  (* B_M) ×      *(A_M × year)} ⋄")
 [A_M, B_M], run("A_M B_M")
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 In 1971, there were 2250 transistors. Use `Moores_law` to predict how many in 1973.
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -129,9 +126,8 @@ print("In 1973, G. Moore expects {:.0f} transistors on Intels chips".format(ML_1
 print("This is x{:.2f} more transistors than 1971".format(ML_1973 / ML_1971))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -145,7 +141,7 @@ _←'.format←⍕'
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## Loading historical data
 - Transistor count each year in CSV
@@ -159,18 +155,16 @@ Print first 10 rows of `transistor_data.csv`. The columns are
 |Intel 4004 (4-bit  16-pin)|2250|1971|Intel|"10,000 nm"|12 mm²|
 |...|...|...|...|...|...|
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 ! head transistor_data.csv
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -181,7 +175,7 @@ run("""
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Only need columns 2 & 3
 
@@ -190,18 +184,16 @@ Only need columns 2 & 3
 - `usecols = [1,2]`: import cols 2 & 3
 - `skiprows = 1`: skip header row
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
 data = np.loadtxt("transistor_data.csv", delimiter=",", usecols=[1, 2], skiprows=1)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -215,14 +207,13 @@ data←1⊃⎕CSV'transistor_data.csv'⍬(0 4 4 0 0 0)1
 # data = csv[1:, 1:3]
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 - Assign `data` to `year` and `transistor_count`
 - Print first 10 values (`[:10]`)
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -233,13 +224,12 @@ print("year:\t\t", year[:10])
 print("trans. cnt:\t", transistor_count[:10])
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
-run("""
+apl.eval("""
 year←data[;2]⊣'  ⍝ grab the second column and assign'
 transistor_count←data[;1]⊣'  ⍝ grab the first column and assign'
 
@@ -248,13 +238,12 @@ transistor_count←data[;1]⊣'  ⍝ grab the first column and assign'
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Goal: solve `yi = A × year + B` for `A`, `B`
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -262,13 +251,12 @@ yi = np.log(transistor_count)
 run("yi←  ⍟ transistor_count");
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"slideshow": {"slide_type": ""}}
 
 Use least squares
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -277,9 +265,8 @@ model = model.convert()
 model
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -292,13 +279,12 @@ model←yi⌹(1,⍪year)
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 The individual parameters `A` and `B` are the coefficients of our linear model:
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -306,22 +292,20 @@ B, A = model
 # (B A)←model
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"slideshow": {"slide_type": ""}}
 
 Increase rate = `e^(2 × A)`
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
 print(f"Rate of semiconductors added on a chip every 2 years: {np.exp(2 * A):.2f}")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -330,20 +314,19 @@ run("""
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 Plot & compare:
 - Least squares
 - Moore's law
 - Real world data
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"slideshow": {"slide_type": ""}}
 
 style sheet: `fivethirtyeight`
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -365,18 +348,16 @@ plt.legend(loc="center left", bbox_to_anchor=(1, 0.5))
 plt.ylabel("# of transistors\nper microprocessor")
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 plot1[0].figure
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -412,9 +393,8 @@ sp←⎕NEW Causeway.SharpPlot
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -440,16 +420,15 @@ sp.RenderSvg ⍬
 """))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 IPython.display.SVG(run("sp.RenderSvg ⍬"))
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Zoom in on `year == 2017`, compare:
 - Moore's law
@@ -458,9 +437,8 @@ Zoom in on `year == 2017`, compare:
 
 Use `alpha=0.2`, opaque points mean overlap
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -473,9 +451,8 @@ your_model2017 = np.exp(B) * np.exp(A * y)
 Moore_Model2017 = Moores_law(y)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -491,9 +468,8 @@ Moore_Model2017←Moores_law y
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -512,18 +488,16 @@ plt.ylabel("# of transistors\nper microprocessor")
 plt.legend()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 plot2[0].figure
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -553,26 +527,25 @@ sp.RenderSvg ⍬
 """))
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 IPython.display.SVG(run("sp.RenderSvg ⍬"))
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"slideshow": {"slide_type": ""}}
 
 - Least squares: close to mean
 - Moore's law: close to max
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 - Least squares: close to mean
 - Moore's law: close to max
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## Share as zipped arrays and CSV
 - `np.savez`: NumPy arrays for other Python sessions
@@ -581,9 +554,8 @@ IPython.display.SVG(run("sp.RenderSvg ⍬"))
 
 `savez` with `notes=notes`
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -600,9 +572,8 @@ notes += "regression_csts: linear regression constants A and B for log(transisto
 print(notes)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -620,9 +591,8 @@ notes,←'regression_csts: linear regression constants A and B for log(transisto
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -637,9 +607,8 @@ np.savez(
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -653,9 +622,8 @@ _←'"" "mooreslaw_regression"⎕SE.Link.Fix ⎕SE.Dyalog.Array.Serialise _ns'
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -665,9 +633,8 @@ results←⎕SE.Dyalog.Array.Deserialise⊃⎕NGET'mooreslaw_regression.apln'
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -675,33 +642,30 @@ print(      results["regression_csts"][1])
 run("⎕←1↓13⍕results. regression_csts  [2]");
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 ! ls
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 run("⎕←↑⎕SH'ls'");
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ### CSV
 - `np.savetxt` with `header=head`
 - need 2D array
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -718,9 +682,8 @@ head += "year:, transistor_count:, transistor_count_predicted:, transistor_Moore
 print(head)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -737,13 +700,12 @@ head,←'year:, transistor_count:, transistor_count_predicted:, transistor_Moore
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 Build 2D array by `np.block`ing 1D vectors with `np.newaxis` (1-col arrays) together
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -754,9 +716,8 @@ print(   year[:,np.newaxis].shape)
 run("⎕←⍴⍪year");
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -770,9 +731,8 @@ output = np.block(
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: fragment
 ---
@@ -781,27 +741,24 @@ output←year,transistor_count,transistor_count_predicted,⍪transistor_Moores_l
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
 np.savetxt("mooreslaw_regression.csv", X=output, delimiter=",", header=head)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
 ! head mooreslaw_regression.csv
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: subslide
 ---
@@ -811,9 +768,8 @@ _←content ⎕NPUT'mooreslaw_regression.csv' 1
 """);
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -824,7 +780,7 @@ run("""
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 ## Functions we used
 
@@ -855,7 +811,7 @@ td, th {
 - Nested function calls ←→ shallow definitions (debugging context)
 - Mature ecosystem (plot styles, exports) ←→ workarounds/hacks/rolling your own
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ## Some points
 - Specific functions ←→ small composable functions (FP)
@@ -863,12 +819,12 @@ td, th {
 - Nested function calls ←→ shallow definitions (debugging context)
 - Mature ecosystem (plot styles, exports) ←→ workarounds/hacks/rolling your own
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 # Chat, Q&A
 happy little demos?
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}}
 
 - Point free appendix
 - 1-liner glass cleaner fractal
@@ -877,22 +833,21 @@ happy little demos?
 
 @MaxCan-Code "Max Sun APL"
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}}
 
 # Point-free (tacit) demo
 - Opinionated takes
 - Not liable for mental dmg
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 - `n+2` letter name/notation/definition/formula/src code?
 - see as 1 unit (`poly morph ism` ←→  `polymorphism`):
   - `(B_M×⍨∘*⍨∘*A_M×⊢)`
 - vs autocomplete
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -900,9 +855,8 @@ Moores_law = lambda year: np.exp(B_M) * np.exp(A_M * year)
 Moores_law(1971), Moores_law(1973)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -919,16 +873,15 @@ _←'https://aplcart.info?q=split%20compose (looks better next ver)'
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 - `n+2` letter name/notation/definition/formula/src code?
 - see as 1 unit (`poly morph ism` ←→  `polymorphism`):
   - `(⊣⌹1,∘⍪⊢)`
 - vs autocomplete
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -938,9 +891,8 @@ B, A = model
 print(B ,A)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -952,16 +904,15 @@ run("""
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 - `n+2` letter name/notation/definition/formula/src code?
 - see as 1 unit (`poly morph ism` ←→  `polymorphism`):
   - `(⌈/ , ⌊/ , +/÷≢)`
 - vs autocomplete
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -970,9 +921,8 @@ print(
 )
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 ---
-editable: true
 slideshow:
   slide_type: ''
 ---
@@ -985,7 +935,7 @@ mean←{v←⍵ ⋄ (+/v)÷(≢v)}
 """);
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "subslide"}}
++++ {"slideshow": {"slide_type": "subslide"}}
 
 ## Related Work
 
@@ -998,3 +948,86 @@ mean←{v←⍵ ⋄ (+/v)÷(≢v)}
 | verb   | ←→ | function on nouns |
 | adverb | ←→ | modify verb       |
 https://code.jsoftware.com/wiki/Vocabulary/Words#Parts_Of_Speech
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+# NumPy vs APL: Behind the Scenes
+
+[About me](#/0/2)
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+## Features
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Edit in-place
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Rich text (Markdown), run code, embed results, transitions, zoom
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Interactive, literate (Donald Knuth)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+## Code
+Py'n'APL
+- [`⋄` hack](#/2/4)
+
+SharpPlot
+- [Digging](#/3/2), `]Chart`
+
+Make slides like these?
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+Install: JupterLab
+- extension: jupyterlab-rise
+- View -> Command Palette -> Open Reveal
+
+(Py'n'APL: docs)
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+##  More tools
+Dyalog Jupyter kernel
+
+APL language bar
+
+Jupytext
+- ipynb md sync
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+## Wrap up
+
+1. Features:
+   - Edit in-place
+   - Markdown text
+   - Run code
+3. Tools:
+   - Py'n'APL
+   - SharpPlot
+   - JupyterLab + jupyterlab-rise
+   - Dyalog Jupyter kernel + APL language bar
+   - Jupytext
+
+
+Slides and source: https://github.com/MaxCan-Code/numpy-tutorials
+
+"Max Sun APL"
+- Making documents
+- Discuss literate programming
+
+## Questions/Comments/Chat
+
++++ {"slideshow": {"slide_type": "subslide"}}
+
+## Extras
+Markdown syntax
+
+https://MaxCan-Code.github.io/numpy-tutorials/content/mooreslaw-tutorial.slides.html
+- nbconv template: word-wrap, c/t

@@ -1,0 +1,5 @@
+{%- extends 'reveal/index.html.j2' -%}
+{% block notebook_css %}
+{{ super() }}
+{{ resources.include_css("static2/custom_reveal.css") }}
+{% endblock notebook_css %}
